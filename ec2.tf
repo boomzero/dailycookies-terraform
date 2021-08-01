@@ -1,12 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
-locals {
-  # naming convention: ec2-${region}-${short_env}-${app_code}
-  webserver_instance_name = "ec2-${var.region}-${substr(var.env,0,1)}-webserver"
-}
-
 data "aws_ami" "webserver" {
   most_recent = true
 
