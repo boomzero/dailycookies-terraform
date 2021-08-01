@@ -18,8 +18,8 @@ data "aws_ami" "webserver" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "ubuntu" {
-  ami           = data.aws_ami.ubuntu.id
+resource "aws_instance" "webserver" {
+  ami           = data.aws_ami.webserver.id
   instance_type = var.webserver_instance_type
 
   tags = {
