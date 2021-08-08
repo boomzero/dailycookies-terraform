@@ -34,6 +34,8 @@ resource "aws_subnet" "core_public" {
 resource "aws_network_interface" "core_public_webserver" {
   subnet_id = aws_subnet.core_public.id
 
+  security_groups = [module.core_stack_webserver_sg.security_group_id]
+
   tags = {
     Name = local.webserver_core_public_network_interface_name
   }
