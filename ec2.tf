@@ -27,4 +27,5 @@ resource "aws_instance" "webserver" {
     Name = local.webserver_instance_name
   }
 
+  depends_on = [aws_internet_gateway.core_stack]
 }

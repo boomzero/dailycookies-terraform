@@ -7,6 +7,14 @@ resource "aws_vpc" "core_vpc" {
 
 }
 
+resource "aws_internet_gateway" "core_stack" {
+  vpc_id = aws_vpc.core_vpc.id
+
+  tags = {
+    Name = local.internet_gateway_vpc_name
+  }
+}
+
 resource "aws_subnet" "core_public" {
   vpc_id                  = aws_vpc.core_vpc.id
   cidr_block              = var.core_public_subnet_cidr
