@@ -5,13 +5,6 @@ resource "aws_vpc" "core_vpc" {
     Name = local.core_vpc_name
   }
 
-  # tags = merge(
-  #   {
-  #     "name" = format("%s", var.name)
-  #   },
-  #   var.tags,
-  #   var.vpc_tags,
-  # )
 }
 
 resource "aws_subnet" "core_public" {
@@ -21,5 +14,13 @@ resource "aws_subnet" "core_public" {
 
   tags = {
     Name = local.core_public_subnet_name
+  }
+}
+
+resource "aws_network_interface" "core_public_webserver" {
+  subnet_id = aws_subnet.core_public.id
+
+  tags = {
+    Name = local.webserver_core_public_network_interface_name
   }
 }

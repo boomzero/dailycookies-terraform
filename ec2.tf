@@ -18,7 +18,13 @@ resource "aws_instance" "webserver" {
   ami           = data.aws_ami.webserver.id
   instance_type = var.webserver_instance_type
 
+  network_interface {
+    network_interface_id = aws_network_interface.core_public_webserver.id
+    device_index         = 0
+  }
+
   tags = {
     Name = local.webserver_instance_name
   }
+
 }
