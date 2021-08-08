@@ -16,5 +16,6 @@ locals {
   # compute
   webserver_core_public_network_interface_name = "interface-${var.region}-${local.short_env}-core-stack-public-webserver"
   webserver_instance_name                      = "ec2-${var.region}-${local.short_env}-webserver"
+  webserver_keypair_name                       = "keypair-${local.webserver_instance_name}-admin"
 }
 

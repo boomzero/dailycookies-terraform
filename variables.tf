@@ -24,3 +24,7 @@ variable "webserver_instance_type" {
   description = "Type of EC2 instance to provision"
   default     = "t3.micro"
 }
+
+variable "webserver_public_key" {
+  description = "Public key used for SSH access to webserver"
+}
