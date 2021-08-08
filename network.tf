@@ -70,9 +70,10 @@ resource "aws_route_table_association" "core_public" {
 module "core_stack_webserver_sg" {
   source = "terraform-aws-modules/security-group/aws"
 
-  name        = local.core_stack_webserver_security_group_name
-  description = "Allow HTTP/HTTPS, SSH access to webserver from internet"
-  vpc_id      = aws_vpc.core.id
+  name            = local.core_stack_webserver_security_group_name
+  description     = "Allow HTTP/HTTPS, SSH access to webserver from internet"
+  vpc_id          = aws_vpc.core.id
+  use_name_prefix = false
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
   ingress_rules       = ["https-443-tcp", "http-80-tcp", "ssh-tcp"]
