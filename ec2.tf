@@ -27,5 +27,7 @@ resource "aws_instance" "webserver" {
     Name = local.webserver_instance_name
   }
 
+  vpc_security_group_ids = [module.core_stack_webserver_sg.security_group_id]
+
   depends_on = [aws_internet_gateway.core_stack]
 }

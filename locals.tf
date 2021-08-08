@@ -8,10 +8,10 @@ locals {
   core_public_subnet_name   = "subnet-${var.region}-${local.short_env}-core-stack-public"
 
   # routing
-  core_public_rtb_name = "rtb-${var.region}-${var.short_env}-core-stack-public"
+  core_public_rtb_name = "rtb-${var.region}-${local.short_env}-core-stack-public"
 
   # network access
-  core_stack_webserver_security_group_name = "sg-${var.region}-${var.short_env}-core-stack-webserver"
+  core_stack_webserver_security_group_name = "sg-${var.region}-${local.short_env}-core-stack-webserver"
 
   # compute
   webserver_core_public_network_interface_name = "interface-${var.region}-${local.short_env}-core-stack-public-webserver"

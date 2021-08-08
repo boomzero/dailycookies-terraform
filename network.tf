@@ -72,6 +72,6 @@ module "core_stack_webserver_sg" {
   description = "Allow HTTP/HTTPS, SSH access to webserver from internet"
   vpc_id      = aws_vpc.core_vpc.id
 
-  ingress_cidr_blocks      = ["0.0.0.0/0"]
-  ingress_rules            = ["https-443-tcp", "http-80-tcp", "ssh-tcp"]
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+  ingress_rules       = ["https-443-tcp", "http-80-tcp", "ssh-tcp"]
 }
