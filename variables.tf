@@ -14,7 +14,7 @@ variable "core_vpc_cidr" {
 
 variable "core_public_subnet_cidr" {
   description = "CIDR of public subnet (Core VPC)"
-  default     = "10.1.0.0/16"
+  default     = "10.0.2.0/24"
 }
 
 variable "core_map_public_ip_on_launch" {
