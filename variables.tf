@@ -9,12 +9,10 @@ variable "region" {
 
 variable "core_vpc_cidr" {
   description = "CIDR of VPC host core app stack"
-  default     = "10.0.0.0/16"
 }
 
 variable "core_public_subnet_cidr" {
   description = "CIDR of public subnet (Core VPC)"
-  default     = "10.0.2.0/24"
 }
 
 variable "core_map_public_ip_on_launch" {
