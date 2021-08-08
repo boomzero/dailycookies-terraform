@@ -42,26 +42,21 @@ resource "aws_network_interface" "core_public_webserver" {
 /* -------------------------------------------------------------------------- */
 /*                                   Routing                                  */
 /* -------------------------------------------------------------------------- */
-locals {
-  # workaround for tf plan validation error
-  core_stack_igw_id = aws_internet_gateway.core_stack.id
-}
-
 resource "aws_route_table" "core_public" {
   vpc_id = aws_vpc.core.id
-
-  route = [
-    {
-      cidr_block = "0.0.0.0/0"
-      gateway_id = local.core_stack_igw_id
-    }
-  ]
 
   tags = {
     Name = local.core_public_rtb_name
   }
 
-  depends_on = [aws_internet_gateway.core_stack]
+}
+
+# To fix the plan validation issue on internet gatway id, 
+# we need to declare route as a terraform resource block.
+resource "aws_route" "core_public_internal_to_internet" {
+  route_table_id         = aws_route_table.core_public.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.core_stack.id
 }
 
 resource "aws_route_table_association" "core_public" {
